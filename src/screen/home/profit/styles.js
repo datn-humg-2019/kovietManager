@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent"
   },
   content2: {
-    paddingTop: values.tabbarContent + values.marginTopScreen,
+    paddingTop: 40 + values.marginTopScreen,
     height: "100%",
     width: "100%",
     position: "absolute",

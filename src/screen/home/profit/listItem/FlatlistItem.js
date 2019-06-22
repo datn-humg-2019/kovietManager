@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Text, View, Image, TouchableOpacity, FlatList } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import FastImage from "react-native-fast-image";
 import { get } from "lodash";
-import numeral from "numeral";
 
 import { values, color, images } from "../../../../config";
 import ListItemChild from "./listChild/";
-import FastImage from "react-native-fast-image";
 export default class FlatlistItem extends Component {
   constructor(props) {
     super(props);
@@ -14,20 +13,15 @@ export default class FlatlistItem extends Component {
   }
 
   render() {
-    let { item, clickItem, clickItemChild, clickMore } = this.props;
+    let { item, clickItemChild, clickMore } = this.props;
     return (
       <TouchableOpacity
-        // onPress={() => clickItem(item)}
         activeOpacity={1}
         style={[
           {
             width: "100%",
             paddingVertical: 10,
-
             backgroundColor: "transparent",
-
-            // borderBottomColor: '#ccc', borderBottomWidth: 0.5,
-
             alignItems: "center"
           }
         ]}
@@ -45,7 +39,7 @@ export default class FlatlistItem extends Component {
             numberOfLines={2}
             style={{ fontSize: values.fontSizeTitle, color: "black", flex: 1 }}
           >
-            {get(item,'title')}
+            {get(item, "title")}
           </Text>
           <View
             style={{

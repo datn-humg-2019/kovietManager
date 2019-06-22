@@ -25,8 +25,9 @@ class User {
 
   @action
   login(body, callback = null) {
+    console.log("body: ", body);
     PostNoToken(api.AUTH.login, body, (data, status) => {
-      console.log("dataL ", data);
+      console.log("data login ", data);
       if (status) {
         if (get(data, "code") == 0) {
           AsyncStorage.setItem("token", get(data, "data.loginToken"));

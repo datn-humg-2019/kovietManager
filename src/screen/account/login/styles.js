@@ -4,7 +4,7 @@ import { values, color } from "../../../config";
 const styles = StyleSheet.create({
   fogotPass: {
     fontSize: values.fontSizeNormal,
-    color: "#fff",
+    color: "black",
     paddingHorizontal: 20,
     textAlign: "center"
   },

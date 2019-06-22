@@ -8,23 +8,19 @@ import {
   RefreshControl
 } from "react-native";
 import { Navigation } from "react-native-navigation";
-import { images, screenId, values, color, config } from "../../../config";
+import { images, values, color, config } from "../../../config";
 import NavbarItem from "../../../component/NavbarItem";
-import ItemHome from "../ItemHome";
-import numeral from "numeral";
 
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
 import ListItemView from "./listItem";
-import ListItemChild from "./listItem/listChild";
-import NavbarPopup from "../../../component/NavbarPopup";
 import MoreView from "./more";
 import FilterView from "./filter";
 import LayeredChartsExample from "../../../component/LayeredChartsExample";
 import FastImage from "react-native-fast-image";
-import moment from "moment";
 import styles from "./styles";
-import { convertToPrice } from "../../../utils/Func";
+
+//Doanh số
 @inject("Sale", "Profit")
 @observer
 export default class SaleScreen extends Component {
@@ -34,15 +30,13 @@ export default class SaleScreen extends Component {
     this.state = {
       refreshing: false,
       isIncrease: true,
-      profit: 7891122,
-      netRevenue: "82%",
       isIncreaseNetRevenue: false,
-      allProduct: 11672,
       isShowMore: false,
       isShowFilter: false,
       dataAll: [],
       typeShowAll: ""
     };
+
     Navigation.mergeOptions("SaleScreen", {
       topBar: {
         visible: false,
@@ -57,7 +51,6 @@ export default class SaleScreen extends Component {
     });
     Navigation.events().bindComponent(this); // <== Will be automatically unregistered when unmounted
   }
-  componentWillMount() {}
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId == "back") {
@@ -112,12 +105,12 @@ export default class SaleScreen extends Component {
     }
     this.showMore();
   };
+
   clickItemChild = item => {
-    this.showDetailItem(item);
+    // this.showDetailItem(item);
   };
 
   clickItemFilter = item => {
-    console.log("item sale: ", item);
     let { Profit } = this.props;
     Profit.setItemFilter(item);
     // Profit.getChart();
@@ -229,15 +222,23 @@ export default class SaleScreen extends Component {
   };
 
   render() {
-    let { title, Profit, Sale } = this.props;
-    let { dataAll, typeShowAll } = this.state;
+    const { title, Profit, Sale } = this.props;
+    const {
+      dataAll,
+      isIncrease,
+      isIncreaseNetRevenue,
+      isShowFilter,
+      isShowMore,
+      refreshing,
+      typeShowAll
+    } = this.state;
     return (
       <ImageBackground style={styles.imgBg} source={images.background}>
         <View style={styles.content01}>
           <ScrollView
             refreshControl={
               <RefreshControl
-                refreshing={this.state.refreshing}
+                refreshing={refreshing}
                 onRefresh={this.onRefresh}
               />
             }
@@ -275,29 +276,17 @@ export default class SaleScreen extends Component {
                   style={[
                     styles.textContent4,
                     {
-                      color: this.state.isIncrease
-                        ? color.mainColor
-                        : color.colorDecrease
+                      color: isIncrease ? color.mainColor : color.colorDecrease
                     }
                   ]}
-                >
-                  {/* {convertToPrice(Sale.totalSale)} */}
-                </Text>
+                />
                 <FastImage
                   resizeMode={FastImage.resizeMode.contain}
                   style={{
                     height: 8
                   }}
-                  tintColor={
-                    this.state.isIncrease
-                      ? color.mainColor
-                      : color.colorDecrease
-                  }
-                  source={
-                    this.state.isIncrease
-                      ? images.ic_increase
-                      : images.ic_decrease
-                  }
+                  tintColor={isIncrease ? color.mainColor : color.colorDecrease}
+                  source={isIncrease ? images.ic_increase : images.ic_decrease}
                 />
               </View>
               <Text style={styles.text5}>{"Doanh thu thuần(Triệu đồng)"}</Text>
@@ -306,28 +295,22 @@ export default class SaleScreen extends Component {
                   style={[
                     styles.text6,
                     {
-                      color: this.state.isIncreaseNetRevenue
+                      color: isIncreaseNetRevenue
                         ? color.mainColor
                         : color.colorDecrease
                     }
                   ]}
-                >
-                  {/* {numeral((Sale.totalProfit / Sale.totalSale) * 100).format(
-                    "0,0"
-                  ) + "%"} */}
-                </Text>
+                />
                 <FastImage
                   resizeMode={FastImage.resizeMode.contain}
                   tintColor={
-                    this.state.isIncreaseNetRevenue
-                      ? color.mainColor
-                      : color.colorDecrease
+                    isIncreaseNetRevenue ? color.mainColor : color.colorDecrease
                   }
                   style={{
                     height: 8
                   }}
                   source={
-                    this.state.isIncreaseNetRevenue
+                    isIncreaseNetRevenue
                       ? images.ic_increase
                       : images.ic_decrease
                   }
@@ -337,16 +320,6 @@ export default class SaleScreen extends Component {
                 <View style={styles.content7Child}>
                   <LayeredChartsExample />
                 </View>
-                {/* <View style={styles.content8}>
-                  <View style={styles.Conten8Child1}>
-                    <View style={styles.content8child2} />
-                    <Text style={styles.textContent8Child2}>{"Doanh số"}</Text>
-                  </View>
-                  <View style={styles.content9}>
-                    <View style={styles.content10} />
-                    <Text style={styles.text11}>{"Lợi nhuận"}</Text>
-                  </View>
-                </View> */}
               </View>
             </TouchableOpacity>
             <ListItemView
@@ -360,7 +333,7 @@ export default class SaleScreen extends Component {
           <NavbarItem goBack={this.goBack} title={title} />
         </View>
         <MoreView
-          isShow={this.state.isShowMore}
+          isShow={isShowMore}
           title={"Tất cả "}
           goBack={this.dismissModal}
           clickItemChild={this.clickItemChild}
@@ -369,7 +342,7 @@ export default class SaleScreen extends Component {
         />
         <FilterView
           goBack={this.dismissFilter}
-          isShow={this.state.isShowFilter}
+          isShow={isShowFilter}
           clickItem={this.clickItemFilter}
           data={config.typeFilterDate}
         />

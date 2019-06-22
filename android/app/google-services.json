@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "966251619591",
+    "firebase_url": "https://koviet-a9423.firebaseio.com",
+    "project_id": "koviet-a9423",
+    "storage_bucket": "koviet-a9423.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966251619591:android:213466fe6405bbfd",
+        "android_client_info": {
+          "package_name": "com.atran.koviet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966251619591-m978qv61u327bej64f3ahj41sjb0qi26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6YdyuHwxC2Qk_rmCiiYxeFRKIIAAffg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966251619591-m978qv61u327bej64f3ahj41sjb0qi26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966251619591:android:ca365019757a352a",
+        "android_client_info": {
+          "package_name": "com.atran.kovietManager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966251619591-m978qv61u327bej64f3ahj41sjb0qi26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6YdyuHwxC2Qk_rmCiiYxeFRKIIAAffg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966251619591-m978qv61u327bej64f3ahj41sjb0qi26.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

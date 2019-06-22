@@ -14,6 +14,7 @@ import SimpleToast from "react-native-simple-toast";
 import { validateEmail } from "../../../utils/Func";
 import AppComponent from "../../../component/AppComponent";
 import { PostNoToken } from "../../../config/request";
+import FastImage from "react-native-fast-image";
 
 export default class FogotPasswordScreen extends AppComponent {
   constructor(props) {

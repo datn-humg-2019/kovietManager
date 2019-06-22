@@ -9,8 +9,6 @@ export function PostNoToken(url, json, callback) {
     timeout: 20 * 1000,
     baseURL: config.domain_api
   });
-  console.log("url", url);
-  console.log("json", json);
   instance
     .post(url, json)
     .then(function(response) {

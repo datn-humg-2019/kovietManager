@@ -72,7 +72,6 @@ export default class DetailItemScreen extends Component {
     let { Profit, fromDate, toDate, item } = this.props;
     switch (item.type) {
       case config.typeData.shop:
-        // alert('sss')
         Profit.getDetailProfitStores(
           fromDate,
           toDate,

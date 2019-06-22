@@ -36,8 +36,10 @@ export default class LoginScreen extends React.PureComponent<PropsType> {
     super(props);
 
     this.state = {
-      email: "aitranxuan.dev@gmail.com",
-      password: "123456",
+      email: "",
+      password: "",
+      // email: "aitranxuan.dev@gmail.com",
+      // password: "123456",
       isShowPass: false
     };
   }
@@ -46,24 +48,24 @@ export default class LoginScreen extends React.PureComponent<PropsType> {
     let { email, password } = this.state;
 
     let check = false;
-    // if (username.trim() != "") {
-    if (validateEmail(email)) {
-      if (password.trim() != "") {
-        check = true;
-        // if (this.state.password.trim().length > 6) {
+    if (email.trim() != "") {
+      if (validateEmail(email)) {
+        if (password.trim() != "") {
+          check = true;
+          // if (this.state.password.trim().length > 6) {
 
-        // } else {
-        //   SimpleToast.show('Mật khẩu cần phải lớn hơn 6 kí tự')
-        // }
+          // } else {
+          //   SimpleToast.show('Mật khẩu cần phải lớn hơn 6 kí tự')
+          // }
+        } else {
+          SimpleToast.show("Bạn cần nhập mật khẩu");
+        }
       } else {
-        SimpleToast.show("Bạn cần nhập mật khẩu");
+        SimpleToast.show("Bạn cần nhập đúng định dạng email");
       }
     } else {
-      SimpleToast.show("Bạn cần nhập đúng định dạng email");
+      SimpleToast.show("Bạn cần nhập email");
     }
-    // } else {
-    //   SimpleToast.show("Bạn cần nhập username");
-    // }
     return check;
   };
 
@@ -150,9 +152,9 @@ export default class LoginScreen extends React.PureComponent<PropsType> {
           containStyle={styles.containStyle}
           title={"Đăng nhập"}
         />
-        <TouchableOpacity onPress={clickFogotPass}>
+        {/* <TouchableOpacity onPress={clickFogotPass}>
           <Text style={styles.fogotPass}>Quên mật khẩu?</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }

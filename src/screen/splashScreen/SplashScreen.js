@@ -59,14 +59,14 @@ export default class SplashScreen extends Component {
       >
         <Text
           style={{
-            fontSize: 70,
+            fontSize: 50,
             fontWeight: "bold",
             fontFamily: fonts.svn_inter,
             color: "#fff",
             textAlign: "center"
           }}
         >
-          {"KoViet Manager"}
+          {"KOViet Manager"}
         </Text>
         {!OnApp.isConnect ? (
           <Text style={StyleSheet.textDisconnect}>

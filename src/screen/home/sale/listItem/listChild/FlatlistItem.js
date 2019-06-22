@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import numeral from "numeral";
+import { Text, View, TouchableOpacity } from "react-native";
+import FastImage from "react-native-fast-image";
 import { get } from "lodash";
 
-import { values, color, images, config } from "../../../../../config";
-import FastImage from "react-native-fast-image";
-import { convertToPrice } from "../../../../../utils/Func";
+import { values, color, images } from "../../../../../config";
+
 export default class FlatlistItem extends Component {
   render() {
     let { item, clickItem, type } = this.props;
@@ -73,11 +72,10 @@ export default class FlatlistItem extends Component {
               paddingLeft: 5
             }}
           >
-            {get(item, "turnover")}
+            {get(item, "turnover") ? `${get(item, "turnover")} sp` : ""}
           </Text>
         </View>
       </TouchableOpacity>
-      // </View >
     );
   }
 }

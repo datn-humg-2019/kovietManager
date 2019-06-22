@@ -8,22 +8,19 @@ import {
   RefreshControl
 } from "react-native";
 import { Navigation } from "react-native-navigation";
-import { images, screenId, values, color, config } from "../../../config";
+import { images, values, color, config } from "../../../config";
 import NavbarItem from "../../../component/NavbarItem";
-import ItemHome from "../ItemHome";
-import numeral from "numeral";
 
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
 import ListItemView from "./listItem";
-import ListItemChild from "./listItem/listChild";
-import NavbarPopup from "../../../component/NavbarPopup";
 import MoreView from "./more";
 import FilterView from "./filter";
 import LayeredChartsExample from "../../../component/LayeredChartsExample";
 import FastImage from "react-native-fast-image";
 import styles from "./styles";
-import { convertToPrice } from "../../../utils/Func";
+
+//lợi nhuận
 @inject("Profit", "Sale")
 @observer
 export default class ProfitScreen extends Component {
@@ -33,10 +30,7 @@ export default class ProfitScreen extends Component {
     this.state = {
       refreshing: false,
       isIncrease: true,
-      profit: 7891122,
-      netRevenue: "82%",
       isIncreaseNetRevenue: false,
-      allProduct: 11672,
       isShowMore: false,
       isShowFilter: false,
       dataAll: [],
@@ -69,7 +63,7 @@ export default class ProfitScreen extends Component {
   }
 
   handelGetDataSale = (callback = null) => {
-    const { Profit, Sale } = this.props;
+    const { Profit } = this.props;
     Profit.getListMerchandiseImport(
       Profit.itemFilterSelected.fromDate,
       Profit.itemFilterSelected.toDate,
@@ -113,8 +107,7 @@ export default class ProfitScreen extends Component {
   };
 
   clickItemChild = item => {
-    console.log("item clickItemChild: " + JSON.stringify(item));
-    this.showDetailItem(item);
+    // this.showDetailItem(item);
   };
 
   clickItemFilter = item => {
@@ -223,23 +216,21 @@ export default class ProfitScreen extends Component {
   };
 
   render() {
-    let { title, Profit, Sale } = this.props;
-    let { dataAll, typeShowAll } = this.state;
-    const heightChar =
-      values.deviceHeight > 800
-        ? 250
-        : values.deviceHeight > 700
-        ? 200
-        : values.deviceHeight > 600
-        ? 170
-        : 130;
+    const { title, Profit } = this.props;
+    const {
+      dataAll,
+      isIncrease,
+      isIncreaseNetRevenue,
+      refreshing,
+      typeShowAll
+    } = this.state;
     return (
       <ImageBackground style={styles.imgBg} source={images.background}>
         <View style={styles.content01}>
           <ScrollView
             refreshControl={
               <RefreshControl
-                refreshing={this.state.refreshing}
+                refreshing={refreshing}
                 onRefresh={this.onRefresh}
               />
             }
@@ -277,28 +268,18 @@ export default class ProfitScreen extends Component {
                   style={{
                     fontSize: values.fontSizeLarge,
                     fontWeight: "bold",
-                    color: this.state.isIncrease
-                      ? color.mainColor
-                      : color.colorDecrease
+                    color: isIncrease ? color.mainColor : color.colorDecrease
                   }}
                 >
                   {/* {convertToPrice(Sale.totalSale)} */}
                 </Text>
                 <FastImage
                   resizeMode={FastImage.resizeMode.contain}
-                  tintColor={
-                    this.state.isIncrease
-                      ? color.mainColor
-                      : color.colorDecrease
-                  }
+                  tintColor={isIncrease ? color.mainColor : color.colorDecrease}
                   style={{
                     height: 8
                   }}
-                  source={
-                    this.state.isIncrease
-                      ? images.ic_increase
-                      : images.ic_decrease
-                  }
+                  source={isIncrease ? images.ic_increase : images.ic_decrease}
                 />
               </View>
               <Text style={styles.text5}>{"Doanh thu thuần(Triệu đồng)"}</Text>
@@ -307,28 +288,22 @@ export default class ProfitScreen extends Component {
                   style={[
                     styles.text6,
                     {
-                      color: this.state.isIncreaseNetRevenue
+                      color: isIncreaseNetRevenue
                         ? color.mainColor
                         : color.colorDecrease
                     }
                   ]}
-                >
-                  {/* {numeral((Sale.totalProfit / Sale.totalSale) * 100).format(
-                    "0,0"
-                  ) + "%"} */}
-                </Text>
+                />
                 <FastImage
                   resizeMode={FastImage.resizeMode.contain}
                   tintColor={
-                    this.state.isIncreaseNetRevenue
-                      ? color.mainColor
-                      : color.colorDecrease
+                    isIncreaseNetRevenue ? color.mainColor : color.colorDecrease
                   }
                   style={{
                     height: 8
                   }}
                   source={
-                    this.state.isIncreaseNetRevenue
+                    isIncreaseNetRevenue
                       ? images.ic_increase
                       : images.ic_decrease
                   }
@@ -338,16 +313,6 @@ export default class ProfitScreen extends Component {
                 <View style={styles.content7Child}>
                   <LayeredChartsExample />
                 </View>
-                {/* <View style={styles.content8}>
-                  <View style={styles.Conten8Child1}>
-                    <View style={styles.content8child2} />
-                    <Text style={styles.textContent8Child2}>{"Tăng"}</Text>
-                  </View>
-                  <View style={styles.content9}>
-                    <View style={styles.content10} />
-                    <Text style={styles.text11}>{"Giảm"}</Text>
-                  </View>
-                </View> */}
               </View>
             </TouchableOpacity>
             <ListItemView

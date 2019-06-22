@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  ImageBackground,
-  ScrollView,
-  TouchableOpacity,
-  SectionList
-} from "react-native";
+import { Text, View, ImageBackground, TouchableOpacity } from "react-native";
 import { Navigation } from "react-native-navigation";
-import { images, screenId, values, color, config } from "../../../../config";
-
-import numeral from "numeral";
+import { images, values, color } from "../../../../config";
 
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
-import NavbarItem from "../../../../component/NavbarItem";
 import Navbar from "../../../../component/Navbar";
 import ListItemDetail from "./listChild";
-import FilterView from "./listChild/filter";
 import FastImage from "react-native-fast-image";
 import { convertToPrice } from "../../../../utils/Func";
 
@@ -28,11 +17,6 @@ export default class DetailItemScreen extends Component {
     super(props);
 
     this.state = {
-      isIncrease: true,
-      profit: 7891122,
-      netRevenue: "82%",
-      isIncreaseNetRevenue: false,
-      allProduct: 11672,
       isShowMore: false,
       isShowFilter: false,
       page: 0
@@ -238,12 +222,6 @@ export default class DetailItemScreen extends Component {
             </Text>
           </View>
         </View>
-        {/* <FilterView
-          isShow={this.state.isShowFilter}
-          goBack={this.dismissFilter}
-          clickItem={this.clickItemFilter}
-          data={Profit.filterDetail}
-        /> */}
       </ImageBackground>
     );
   }

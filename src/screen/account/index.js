@@ -128,7 +128,8 @@ export default class AuthScreen extends AppComponent {
           >
             <Text
               style={{
-                fontSize: 56,
+                fontSize: 50,
+                textAlign: "center",
                 fontWeight: "bold",
                 marginBottom: 20,
                 marginTop: values.isTablet

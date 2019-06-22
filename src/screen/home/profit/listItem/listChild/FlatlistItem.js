@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import numeral from "numeral";
+import { Text, View, TouchableOpacity } from "react-native";
 import { get } from "lodash";
 
-import { values, color, images, config } from "../../../../../config";
+import { values, color, images } from "../../../../../config";
 import FastImage from "react-native-fast-image";
 import { convertToPrice } from "../../../../../utils/Func";
 export default class FlatlistItem extends Component {
   render() {
     let { item, clickItem, type } = this.props;
     let width = values.deviceWidth / 8 < 60 ? values.deviceWidth / 8 : 60;
-    // console.log("item", type == config.typeData.shop ? item.tencuahang : item.tennhanvien)
     return (
       <TouchableOpacity
         onPress={() => clickItem({ ...item, type })}
@@ -74,7 +72,9 @@ export default class FlatlistItem extends Component {
               paddingLeft: 5
             }}
           >
-            {get(item, "turnover") ? convertToPrice(get(item, "turnover")) : ""}
+            {get(item, "turnover")
+              ? `${convertToPrice(get(item, "turnover"))}`
+              : ""}
           </Text>
         </View>
       </TouchableOpacity>

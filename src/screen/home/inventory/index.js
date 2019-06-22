@@ -8,25 +8,22 @@ import {
   Image
 } from "react-native";
 import { Navigation } from "react-native-navigation";
-import { images, screenId, values, color } from "../../../config";
+import { images, values, color } from "../../../config";
 import NavbarItem from "../../../component/NavbarItem";
-import ItemHome from "../ItemHome";
-import numeral from "numeral";
 
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
 import ListItemView from "./listItem";
 import { convertToPrice } from "../../../utils/Func";
+
+//tồn kho
+
 @inject("Inventory")
 @observer
 export default class InventoryScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      total: 7891122,
-      allProduct: 11672
-    };
     Navigation.mergeOptions("InventoryScreen", {
       topBar: {
         visible: false,
@@ -41,7 +38,6 @@ export default class InventoryScreen extends Component {
     });
     Navigation.events().bindComponent(this); // <== Will be automatically unregistered when unmounted
   }
-  componentWillMount() {}
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId == "back") {
