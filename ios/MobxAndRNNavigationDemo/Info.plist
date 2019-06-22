@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>KoViet M</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.1</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng sử dụng thư viện phương tiện để chọn ảnh.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng sử dụng bluetooth</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng truy cập lịch</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Vui lòng cho phép sử dụng camera để  chụp ảnh,quét mã QR</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng lấy vị trí của bạn để chỉ đường.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng lấy vị trí của bạn để chỉ đường.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng lấy vị trí của bạn để chỉ đường.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng bạn truy cập vào gia tốc kế của thiết bị.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng sử dụng thư viện phương tiện để chọn ảnh cho sản phẩm.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Vui lòng cho phép ứng dụng gửi dữ liệu đến máy chủ nhận dạng giọng nói của Apple</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>font_sf.otf</string>
+		<string>SF-UI-Display-Regular.otf</string>
+		<string>SVN-Internation.ttf</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+</dict>
+</plist>
