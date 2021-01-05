@@ -8,7 +8,7 @@
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "d3-shape": "^1.2.2",
     "lodash": "4.17.11",
     "mobx": "4.3.1",
